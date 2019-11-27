@@ -1,0 +1,30 @@
+{
+  "name": "sunbird-notification-service",
+  "version": "1.0.0",
+  "description": "sunbird microservice to send notifications like email,sms etc.",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./app/server.ts",
+    "start": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-cassandra": "^2.2.3",
+    "gmail-send": "^1.2.14",
+    "http-status-codes": "^1.3.0",
+    "joi": "^14.1.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "node-rdkafka": "^2.4.2",
+    "nodemailer": "^4.7.0",
+    "nodemon": "^1.18.6",
+    "path": "^0.12.7",
+    "velocityjs": "^1.1.3"
+  }
+}
