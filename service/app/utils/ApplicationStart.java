@@ -18,19 +18,20 @@ import play.api.inject.ApplicationLifecycle;
  */
 @Singleton
 public class ApplicationStart {
-	/**
-	 * All one time initialization which required during server startup will fall here.
-	 * @param lifecycle ApplicationLifecycle
-	 * @param environment Environment
-	 */
-	@Inject
-	public ApplicationStart(ApplicationLifecycle lifecycle, Environment environment) {
-		//instantiate actor system and initialize all the actors
-		Application.getInstance().init();
-		// Shut-down hook
-		lifecycle.addStopHook(
-				() -> {
-					return CompletableFuture.completedFuture(null);
-				});
-	}
+    /**
+     * All one time initialization which required during server startup will fall here.
+     *
+     * @param lifecycle   ApplicationLifecycle
+     * @param environment Environment
+     */
+    @Inject
+    public ApplicationStart(ApplicationLifecycle lifecycle, Environment environment) {
+        //instantiate actor system and initialize all the actors
+        Application.getInstance().init();
+        // Shut-down hook
+        lifecycle.addStopHook(
+                () -> {
+                    return CompletableFuture.completedFuture(null);
+                });
+    }
 }
