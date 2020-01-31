@@ -73,9 +73,9 @@ public class BaseControllerTest {
 		return response;
 	}
 
-	  @Test
-	  public void getTimeStampSuccess() {
-		 Long val = new BaseController().getTimeStamp();
-		 Assert.assertTrue(val<=System.currentTimeMillis());
-	  }
+	@Test
+	public void getTimeStampSuccess() {
+		Long val = new BaseController().getTimeStamp();
+		Assert.assertTrue(val<=System.currentTimeMillis());
+	}
 }

@@ -94,7 +94,7 @@ public class BaseController extends Controller {
    * @return
    */
   public CompletionStage<Result> handleRequest(
-      play.mvc.Http.Request req, RequestValidatorFunction validatorFunction, String operation) {
+          play.mvc.Http.Request req, RequestValidatorFunction validatorFunction, String operation) {
     try {
       Request request = new Request();
       List<String> list = req.getHeaders().toMap().get(NOTIFICATION_DELIVERY_MODE);
@@ -125,7 +125,7 @@ public class BaseController extends Controller {
    * @return
    */
   public CompletionStage<Result> handleRequest(
-      Request req, String operation, play.mvc.Http.Request httpReq) {
+          Request req, String operation, play.mvc.Http.Request httpReq) {
     try {
       return new RequestHandler().handleRequest(req, httpExecutionContext, operation, httpReq);
     } catch (BaseException ex) {
@@ -154,7 +154,7 @@ public class BaseController extends Controller {
       // request", this.getClass().getSimpleName(), "handleLogRequest"),
       // LoggerEnum.ERROR.name());
       return (CompletionStage<Result>)
-      RequestHandler.handleFailureResponse(ex, httpExecutionContext, null);
+              RequestHandler.handleFailureResponse(ex, httpExecutionContext, null);
     }
     return (CompletionStage<Result>)
             RequestHandler.handleSuccessResponse(response, httpExecutionContext, null);
