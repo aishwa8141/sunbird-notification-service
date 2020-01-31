@@ -1,11 +1,10 @@
 package utils;
 
+
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
 import org.sunbird.Application;
 
 import play.api.Environment;
@@ -19,21 +18,19 @@ import play.api.inject.ApplicationLifecycle;
  */
 @Singleton
 public class ApplicationStart {
-	Logger logger = Logger.getLogger(ApplicationStart.class);
 	/**
-	   *
-	   * All one time initialization which required during server startup will fall here.
-	   * @param lifecycle ApplicationLifecycle
-	   * @param environment Environment
-	   */
-	  @Inject
-	  public ApplicationStart(ApplicationLifecycle lifecycle, Environment environment) {
-		  Application.getInstance().init();
-		  BasicConfigurator.configure();
-	    // Shut-down hook
-	    lifecycle.addStopHook(
-	        () -> {
-	          return CompletableFuture.completedFuture(null);
-	        });
-	  }
+	 * All one time initialization which required during server startup will fall here.
+	 * @param lifecycle ApplicationLifecycle
+	 * @param environment Environment
+	 */
+	@Inject
+	public ApplicationStart(ApplicationLifecycle lifecycle, Environment environment) {
+		//instantiate actor system and initialize all the actors
+		Application.getInstance().init();
+		// Shut-down hook
+		lifecycle.addStopHook(
+				() -> {
+					return CompletableFuture.completedFuture(null);
+				});
+	}
 }
